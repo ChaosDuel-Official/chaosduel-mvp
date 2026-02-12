@@ -1,0 +1,27 @@
+{
+  "name": "chaosduel-mvp",
+  "version": "1.0.0",
+  "description": "ChaosDuel — Hub Web3 crypto immersif avec IA émotionnelle",
+  "private": true,
+  "scripts": {
+    "dev": "python3 -m http.server 8000 --directory public",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed"
+  },
+  "keywords": [
+    "crypto",
+    "web3",
+    "ai",
+    "blockchain",
+    "newsletter"
+  ],
+  "author": "ChaosDuel Team",
+  "license": "PROPRIETARY",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

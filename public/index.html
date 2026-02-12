@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChaosDuel — Le Flux s'éveille</title>
+    <meta name="description" content="Hub Web3 crypto immersif avec IA émotionnelle. Rejoins les 1000 Premiers Initiés.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-magenta: #ff006e;
+            --primary-violet: #8338ec;
+            --primary-cyan: #00d9ff;
+            --dark-bg: #0a0a0f;
+            --card-bg: #1a0a2e;
+            --text-primary: #f8f9fa;
+            --text-secondary: #adb5bd;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* VORTEX BACKGROUND ANIMÉ */
+        .vortex-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: radial-gradient(ellipse at center, 
+                rgba(131, 56, 236, 0.15) 0%, 
+                rgba(26, 10, 46, 0.8) 40%, 
+                rgba(10, 10, 15, 1) 100%);
+            animation: vortexRotate 60s linear infinite;
+        }
+
+        @keyframes vortexRotate {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        /* CANVAS PARTICULES */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-magenta), var(--primary-violet));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 60px;
+            animation: fadeInDown 1s ease-out;
+            text-align: center;
+        }
+
+        .counter-section {
+            background: rgba(26, 10, 46, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(131, 56, 236, 0.3);
+            border-radius: 20px;
+            padding: 20px 40px;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out 0.2s both;
+            box-shadow: 0 0 30px rgba(131, 56, 236, 0.2);
+        }
+
+        .counter-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .counter-number {
+            font-size: 48px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-cyan), var(--primary-magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: pulse 2s ease-in-out infinite;
+            transition: transform 0.3s ease;
+        }
+
+        .counter-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .progress-bar {
+            width: 300px;
+            height: 8px;
+            background: rgba(131, 56, 236, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-magenta), var(--primary-violet), var(--primary-cyan));
+            border-radius: 10px;
+            transition: width 0.5s ease-out;
+            box-shadow: 0 0 20px rgba(255, 0, 110, 0.5);
+        }
+
+        .spots-remaining {
+            font-size: 16px;
+            color: var(--primary-magenta);
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        .countdown-section {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .countdown-item {
+            background: rgba(26, 10, 46, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(131, 56, 236, 0.3);
+            border-radius: 15px;
+            padding: 15px 25px;
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .countdown-value {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--primary-cyan);
+        }
+
+        .countdown-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        .main-card {
+            background: rgba(26, 10, 46, 0.8);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(131, 56, 236, 0.3);
+            border-radius: 30px;
+            padding: 60px 50px;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(131, 56, 236, 0.3), 
+                        0 0 100px rgba(255, 0, 110, 0.1);
+            animation: fadeInUp 1s ease-out 0.6s both;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .main-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 80px rgba(131, 56, 236, 0.4), 
+                        0 0 150px rgba(255, 0, 110, 0.2);
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .typing-text {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-cyan), var(--primary-magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background: var(--primary-cyan);
+            margin-left: 5px;
+            animation: blink 1s step-end infinite;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .chaosduel-badge {
+            display: inline-block;
+            background: rgba(131, 56, 236, 0.2);
+            border: 2px solid var(--primary-cyan);
+            border-radius: 12px;
+            padding: 8px 20px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: var(--primary-cyan);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(131, 56, 236, 0.1);
+            border-radius: 15px;
+            border-left: 3px solid var(--primary-cyan);
+            transition: all 0.3s ease;
+            animation: fadeInRight 0.6s ease-out both;
+        }
+
+        .feature-item:nth-child(1) { animation-delay: 0.8s; }
+        .feature-item:nth-child(2) { animation-delay: 0.9s; }
+        .feature-item:nth-child(3) { animation-delay: 1s; }
+        .feature-item:nth-child(4) { animation-delay: 1.1s; }
+
+        .feature-item:hover {
+            background: rgba(131, 56, 236, 0.2);
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(131, 56, 236, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 24px;
+            min-width: 30px;
+        }
+
+        .feature-text {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .urgency-text {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-magenta);
+            margin: 30px 0;
+            padding: 15px;
+            background: rgba(255, 0, 110, 0.1);
+            border-radius: 12px;
+            border: 1px solid var(--primary-magenta);
+            animation: fadeInUp 1s ease-out 1.2s both;
+        }
+
+        .newsletter-form {
+            margin-top: 40px;
+            animation: fadeInUp 1s ease-out 1.3s both;
+        }
+
+        .form-iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 20px;
+            background: transparent;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            animation: fadeIn 1s ease-out 1.5s both;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .footer-link {
+            color: var(--primary-cyan);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-magenta);
+            text-shadow: 0 0 10px var(--primary-magenta);
+        }
+
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .toast {
+            background: rgba(26, 10, 46, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--primary-cyan);
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            box-shadow: 0 5px 20px rgba(0, 217, 255, 0.3);
+            animation: slideInRight 0.5s ease-out, fadeOut 0.5s ease-out 4.5s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toast-icon {
+            font-size: 20px;
+        }
+
+        .toast-text {
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(400px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateX(0); }
+            to { opacity: 0; transform: translateX(400px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0; }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 217, 255, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(0, 217, 255, 0.6); }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 32px; }
+            .main-card { padding: 40px 30px; }
+            .counter-number { font-size: 36px; }
+            .countdown-section { gap: 10px; }
+            .countdown-item { padding: 10px 15px; min-width: 60px; }
+            .countdown-value { font-size: 24px; }
+            .progress-bar { width: 100%; }
+            .toast-container { left: 20px; right: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="vortex-bg"></div>
+    <canvas id="particles-canvas"></canvas>
+    <div class="toast-container" id="toast-container"></div>
+
+    <div class="container">
+        <div class="logo">🌌 CHAOSDUEL</div>
+
+        <div class="counter-section">
+            <div class="counter-wrapper">
+                <div class="counter-label">Membres synchronisés au Flux</div>
+                <div class="counter-number" id="member-count">847</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 84.7%"></div>
+                </div>
+                <div class="spots-remaining" id="spots-remaining">⏰ Plus que 153 places disponibles</div>
+            </div>
+        </div>
+
+        <div class="countdown-section">
+            <div class="countdown-item">
+                <div class="countdown-value" id="hours">71</div>
+                <div class="countdown-label">Heures</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-value" id="minutes">42</div>
+                <div class="countdown-label">Minutes</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-value" id="seconds">15</div>
+                <div class="countdown-label">Secondes</div>
+            </div>
+        </div>
+
+        <div class="main-card">
+            <h1 class="hero-title">
+                <span class="typing-text" id="typing-text"></span><span class="cursor" id="cursor"></span>
+            </h1>
+
+            <div style="text-align: center;">
+                <span class="chaosduel-badge">🔥 ChaosDuel 🔥</span>
+            </div>
+
+            <p class="hero-subtitle">
+                L'IA qui voit ce que les autres ratent.<br>
+                Le hub crypto qui prédit avant Wall Street.
+            </p>
+
+            <ul class="features-list">
+                <li class="feature-item">
+                    <span class="feature-icon">⚡</span>
+                    <span class="feature-text"><strong>Accès VIP</strong> avant tout le monde</span>
+                </li>
+                <li class="feature-item">
+                    <span class="feature-icon">🤖</span>
+                    <span class="feature-text"><strong>Signaux IA</strong> que les institutions paient des millions</span>
+                </li>
+                <li class="feature-item">
+                    <span class="feature-icon">🌌</span>
+                    <span class="feature-text"><strong>Analyses crypto</strong> que 99% des traders ignorent</span>
+                </li>
+                <li class="feature-item">
+                    <span class="feature-icon">🔥</span>
+                    <span class="feature-text"><strong>Un avantage décisif</strong> sur le marché</span>
+                </li>
+            </ul>
+
+            <div class="urgency-text">
+                ⏰ Places limitées. Le Flux ferme dans 72h.
+            </div>
+
+            <div class="newsletter-form">
+                <iframe 
+                    class="form-iframe"
+                    frameborder="0" 
+                    scrolling="auto" 
+                    allowfullscreen 
+                    src="https://db149a9e.sibforms.com/serve/MUIFAIJYDyrR_oFVI973SHgyItFek3pQeBQkpuuo_E1Pk-9mPEHh3fqsbk3FPA2Bpp1Inm0kVF3sGOx2oRcPCf8CxIBlzMnrb1ZwIQqvb-GlDDzPSpbWtvsEs28VCXjVCSV1TvT9bQlV5VVbvT0uXmt3lFeCpOpiMmHcyzazbfby147eBuDgjUz1KsXeJHM6mAOm7WJ_-edFlTAu8w=="
+                    style="display: block; margin-left: auto; margin-right: auto; max-width: 100%;">
+                </iframe>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Le Chaos révèle l'ordre. Le Flux ne dort jamais.</p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Discord</a>
+                <a href="#" class="footer-link">𝕏 Twitter</a>
+                <a href="#" class="footer-link">Telegram</a>
+            </div>
+            <p style="margin-top: 20px; font-size: 12px;">© 2026 ChaosDuel. Tous droits réservés.</p>
+        </div>
+    </div>
+
+    <script>
+        const CONFIG = {
+            initialCount: 847,
+            maxCount: 1000,
+            incrementInterval: 45000,
+            incrementChance: 0.7,
+            toastInterval: 25000,
+            countdownEndDate: new Date(Date.now() + 72 * 60 * 60 * 1000)
+        };
+
+        function getStoredCount() {
+            const stored = localStorage.getItem('chaosduel_member_count');
+            const timestamp = localStorage.getItem('chaosduel_count_timestamp');
+            if (stored && timestamp) {
+                const hoursSince = (Date.now() - parseInt(timestamp)) / (1000 * 60 * 60);
+                if (hoursSince < 24) return parseInt(stored);
+            }
+            return CONFIG.initialCount;
+        }
+
+        function setStoredCount(count) {
+            localStorage.setItem('chaosduel_member_count', count.toString());
+            localStorage.setItem('chaosduel_count_timestamp', Date.now().toString());
+        }
+
+        let currentCount = getStoredCount();
+
+        function updateCounter(count) {
+            const counterEl = document.getElementById('member-count');
+            const progressEl = document.getElementById('progress-fill');
+            const spotsEl = document.getElementById('spots-remaining');
+            counterEl.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                counterEl.textContent = count;
+                counterEl.style.transform = 'scale(1)';
+            }, 200);
+            const percentage = (count / CONFIG.maxCount) * 100;
+            progressEl.style.width = percentage + '%';
+            const remaining = CONFIG.maxCount - count;
+            spotsEl.textContent = `⏰ Plus que ${remaining} places disponibles`;
+            if (remaining < 200) spotsEl.style.animation = 'pulse 1s ease-in-out infinite';
+            setStoredCount(count);
+        }
+
+        function incrementCounter() {
+            if (currentCount < CONFIG.maxCount && Math.random() < CONFIG.incrementChance) {
+                currentCount++;
+                updateCounter(currentCount);
+            }
+        }
+
+        updateCounter(currentCount);
+        setInterval(incrementCounter, CONFIG.incrementInterval);
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = CONFIG.countdownEndDate - now;
+            if (distance < 0) {
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        const textToType = "LE FLUX S'ÉVEILLE — 1000 PLACES SEULEMENT";
+        let charIndex = 0;
+
+        function typeText() {
+            if (charIndex < textToType.length) {
+                document.getElementById('typing-text').textContent += textToType.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeText, 80);
+            }
+        }
+
+        setTimeout(typeText, 1000);
+
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 100;
+        const connectionDistance = 150;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 2 + 1;
+                this.opacity = Math.random() * 0.5 + 0.3;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(0, 217, 255, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) particles.push(new Particle());
+
+        function connectParticles() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < connectionDistance) {
+                        const opacity = (1 - distance / connectionDistance) * 0.3;
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(131, 56, 236, ${opacity})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            connectParticles();
+            requestAnimationFrame(animateParticles);
+        }
+
+        animateParticles();
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        const fakeNames = ['AlexCrypto', 'SarahWeb3', 'MaxTrader', 'LunaDefi', 'EthanNFT', 'SophiaDAO', 'OliverChain', 'EmmaBlock', 'NoahToken', 'AvaStaking', 'LiamYield', 'MiaProtocol', 'WilliamGwei', 'CharlotteSwap', 'JamesLiquidity'];
+
+        function showToast() {
+            const container = document.getElementById('toast-container');
+            const name = fakeNames[Math.floor(Math.random() * fakeNames.length)];
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerHTML = `<span class="toast-icon">🔥</span><span class="toast-text"><strong>@${name}</strong> vient de rejoindre le Flux</span>`;
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 5000);
+        }
+
+        setTimeout(() => {
+            showToast();
+            setInterval(showToast, CONFIG.toastInterval);
+        }, 10000);
+
+        console.log('🌌 ChaosDuel V2 Ultra-Cosmique initialisé');
+        console.log(`📊 Membres actuels: ${currentCount}/${CONFIG.maxCount}`);
+    </script>
+</body>
+</html>
