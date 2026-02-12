@@ -31,7 +31,6 @@
             position: relative;
         }
 
-        /* VORTEX BACKGROUND ANIMÉ */
         .vortex-bg {
             position: fixed;
             top: 0;
@@ -52,7 +51,6 @@
             100% { transform: rotate(360deg) scale(1); }
         }
 
-        /* CANVAS PARTICULES */
         #particles-canvas {
             position: fixed;
             top: 0;
@@ -76,16 +74,36 @@
             justify-content: center;
         }
 
-        .logo {
-            font-size: 32px;
+        .logo-hero {
+            text-align: center;
+            margin-bottom: 80px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .logo-giant {
+            font-size: 96px;
             font-weight: 900;
-            background: linear-gradient(135deg, var(--primary-magenta), var(--primary-violet));
+            background: linear-gradient(135deg, var(--primary-magenta), var(--primary-violet), var(--primary-cyan));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 60px;
-            animation: fadeInDown 1s ease-out;
-            text-align: center;
+            margin-bottom: 15px;
+            letter-spacing: 5px;
+            animation: logoPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 30px rgba(131, 56, 236, 0.4)); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 60px rgba(131, 56, 236, 0.8)); }
+        }
+
+        .tagline {
+            font-size: 24px;
+            color: var(--primary-cyan);
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            opacity: 0.9;
         }
 
         .counter-section {
@@ -113,7 +131,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: pulse 2s ease-in-out infinite;
             transition: transform 0.3s ease;
         }
 
@@ -189,7 +206,7 @@
                         0 0 100px rgba(255, 0, 110, 0.1);
             animation: fadeInUp 1s ease-out 0.6s both;
             position: relative;
-            overflow: hidden;
+            overflow: visible;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -205,23 +222,10 @@
             text-align: center;
             margin-bottom: 30px;
             line-height: 1.2;
-        }
-
-        .typing-text {
-            display: inline-block;
             background: linear-gradient(135deg, var(--primary-cyan), var(--primary-magenta));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 3px;
-            height: 1em;
-            background: var(--primary-cyan);
-            margin-left: 5px;
-            animation: blink 1s step-end infinite;
         }
 
         .hero-subtitle {
@@ -229,7 +233,12 @@
             color: var(--text-secondary);
             text-align: center;
             margin-bottom: 40px;
-            line-height: 1.6;
+            line-height: 1.8;
+        }
+
+        .hero-subtitle strong {
+            color: var(--primary-cyan);
+            font-weight: 700;
         }
 
         .chaosduel-badge {
@@ -242,7 +251,12 @@
             font-weight: 700;
             color: var(--primary-cyan);
             box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
-            animation: glow 2s ease-in-out infinite;
+            animation: badgeGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes badgeGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 217, 255, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(0, 217, 255, 0.6); }
         }
 
         .features-list {
@@ -300,14 +314,123 @@
         .newsletter-form {
             margin-top: 40px;
             animation: fadeInUp 1s ease-out 1.3s both;
+            position: relative;
         }
 
+        .newsletter-form::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(131, 56, 236, 0.5), rgba(255, 0, 110, 0.3), transparent);
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: hypnoticPulse 4s ease-in-out infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes hypnoticPulse {
+            0%, 100% { 
+                transform: translateX(-50%) scale(1);
+                opacity: 0.6;
+            }
+            50% { 
+                transform: translateX(-50%) scale(1.2);
+                opacity: 0.9;
+            }
+        }
+
+        .cta-arrow {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 900;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 10;
+            animation: blinkPulse 1.5s ease-in-out infinite;
+        }
+
+        .cta-arrow-top {
+            color: var(--primary-cyan);
+            text-shadow: 0 0 30px rgba(0, 217, 255, 0.8);
+            display: block;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+
+        .cta-arrow-emoji {
+            font-size: 32px;
+            display: block;
+            margin: 10px 0;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .cta-arrow-bottom {
+            background: linear-gradient(135deg, var(--primary-magenta), var(--primary-violet));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: block;
+        }
+
+        @keyframes blinkPulse {
+            0%, 100% { 
+                opacity: 1; 
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.7; 
+                transform: scale(1.08);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% { 
+                transform: translateY(0);
+            }
+            50% { 
+                transform: translateY(-15px);
+            }
+        }
+
+        /* IFRAME NEWSLETTER - CONTOUR BLANC SUPPRIMÉ + SCROLL RÉDUIT */
         .form-iframe {
             width: 100%;
-            height: 400px;
-            border: none;
+            height: 320px;
+            border: none !important;
             border-radius: 20px;
             background: transparent;
+            outline: none !important;
+            box-shadow: 0 0 60px rgba(131, 56, 236, 0.6),
+                        0 0 120px rgba(255, 0, 110, 0.4);
+            overflow: hidden;
+        }
+
+        /* Wrapper pour masquer le contour blanc de l'iframe */
+        .iframe-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            background: transparent;
+        }
+
+        .iframe-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            pointer-events: none;
+            box-shadow: inset 0 0 0 2px rgba(131, 56, 236, 0.3);
         }
 
         .footer {
@@ -356,6 +479,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            pointer-events: auto;
         }
 
         .toast-icon {
@@ -397,23 +521,11 @@
             to { opacity: 0; transform: translateX(400px); }
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        @keyframes blink {
-            0%, 50%, 100% { opacity: 1; }
-            25%, 75% { opacity: 0; }
-        }
-
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(0, 217, 255, 0.3); }
-            50% { box-shadow: 0 0 40px rgba(0, 217, 255, 0.6); }
-        }
-
         @media (max-width: 768px) {
+            .logo-giant { font-size: 48px; }
+            .tagline { font-size: 16px; }
             .hero-title { font-size: 32px; }
+            .hero-subtitle { font-size: 18px; }
             .main-card { padding: 40px 30px; }
             .counter-number { font-size: 36px; }
             .countdown-section { gap: 10px; }
@@ -421,6 +533,10 @@
             .countdown-value { font-size: 24px; }
             .progress-bar { width: 100%; }
             .toast-container { left: 20px; right: 20px; }
+            .cta-arrow-top { font-size: 16px; }
+            .cta-arrow-bottom { font-size: 18px; }
+            .cta-arrow-emoji { font-size: 28px; }
+            .form-iframe { height: 380px; }
         }
     </style>
 </head>
@@ -430,16 +546,19 @@
     <div class="toast-container" id="toast-container"></div>
 
     <div class="container">
-        <div class="logo">🌌 CHAOSDUEL</div>
+        <div class="logo-hero">
+            <h1 class="logo-giant">🌌 CHAOSDUEL</h1>
+            <p class="tagline">Le Flux s'éveille</p>
+        </div>
 
         <div class="counter-section">
             <div class="counter-wrapper">
                 <div class="counter-label">Membres synchronisés au Flux</div>
-                <div class="counter-number" id="member-count">847</div>
+                <div class="counter-number" id="member-count">849</div>
                 <div class="progress-bar">
-                    <div class="progress-fill" id="progress-fill" style="width: 84.7%"></div>
+                    <div class="progress-fill" id="progress-fill" style="width: 84.9%"></div>
                 </div>
-                <div class="spots-remaining" id="spots-remaining">⏰ Plus que 153 places disponibles</div>
+                <div class="spots-remaining" id="spots-remaining">⏰ Plus que 151 places disponibles</div>
             </div>
         </div>
 
@@ -459,9 +578,7 @@
         </div>
 
         <div class="main-card">
-            <h1 class="hero-title">
-                <span class="typing-text" id="typing-text"></span><span class="cursor" id="cursor"></span>
-            </h1>
+            <h2 class="hero-title">LE FLUX S'ÉVEILLE — 1000 PLACES SEULEMENT</h2>
 
             <div style="text-align: center;">
                 <span class="chaosduel-badge">🔥 ChaosDuel 🔥</span>
@@ -469,7 +586,8 @@
 
             <p class="hero-subtitle">
                 L'IA qui voit ce que les autres ratent.<br>
-                Le hub crypto qui prédit avant Wall Street.
+                Le hub crypto qui prédit avant Wall Street.<br>
+                <strong>Propulsé par la blockchain</strong> pour une transparence totale.
             </p>
 
             <ul class="features-list">
@@ -495,15 +613,23 @@
                 ⏰ Places limitées. Le Flux ferme dans 72h.
             </div>
 
+            <div class="cta-arrow">
+                <span class="cta-arrow-top">⚡ NE RATE PAS TA CHANCE ⚡</span>
+                <span class="cta-arrow-emoji">👇</span>
+                <span class="cta-arrow-bottom">Rejoins le Flux Maintenant</span>
+            </div>
+
             <div class="newsletter-form">
-                <iframe 
-                    class="form-iframe"
-                    frameborder="0" 
-                    scrolling="auto" 
-                    allowfullscreen 
-                    src="https://db149a9e.sibforms.com/serve/MUIFAIJYDyrR_oFVI973SHgyItFek3pQeBQkpuuo_E1Pk-9mPEHh3fqsbk3FPA2Bpp1Inm0kVF3sGOx2oRcPCf8CxIBlzMnrb1ZwIQqvb-GlDDzPSpbWtvsEs28VCXjVCSV1TvT9bQlV5VVbvT0uXmt3lFeCpOpiMmHcyzazbfby147eBuDgjUz1KsXeJHM6mAOm7WJ_-edFlTAu8w=="
-                    style="display: block; margin-left: auto; margin-right: auto; max-width: 100%;">
-                </iframe>
+                <div class="iframe-wrapper">
+                    <iframe 
+                        class="form-iframe"
+                        frameborder="0" 
+                        scrolling="no"
+                        allowfullscreen 
+                        src="https://db149a9e.sibforms.com/serve/MUIFAIJYDyrR_oFVI973SHgyItFek3pQeBQkpuuo_E1Pk-9mPEHh3fqsbk3FPA2Bpp1Inm0kVF3sGOx2oRcPCf8CxIBlzMnrb1ZwIQqvb-GlDDzPSpbWtvsEs28VCXjVCSV1TvT9bQlV5VVbvT0uXmt3lFeCpOpiMmHcyzazbfby147eBuDgjUz1KsXeJHM6mAOm7WJ_-edFlTAu8w=="
+                        style="display: block; margin-left: auto; margin-right: auto; max-width: 100%;">
+                    </iframe>
+                </div>
             </div>
         </div>
 
@@ -520,7 +646,7 @@
 
     <script>
         const CONFIG = {
-            initialCount: 847,
+            initialCount: 849,
             maxCount: 1000,
             incrementInterval: 45000,
             incrementChance: 0.7,
@@ -591,19 +717,6 @@
 
         updateCountdown();
         setInterval(updateCountdown, 1000);
-
-        const textToType = "LE FLUX S'ÉVEILLE — 1000 PLACES SEULEMENT";
-        let charIndex = 0;
-
-        function typeText() {
-            if (charIndex < textToType.length) {
-                document.getElementById('typing-text').textContent += textToType.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeText, 80);
-            }
-        }
-
-        setTimeout(typeText, 1000);
 
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
@@ -688,7 +801,7 @@
             setInterval(showToast, CONFIG.toastInterval);
         }, 10000);
 
-        console.log('🌌 ChaosDuel V2 Ultra-Cosmique initialisé');
+        console.log('🌌 ChaosDuel V4 ULTIME - Landing AAA+ parfaite');
         console.log(`📊 Membres actuels: ${currentCount}/${CONFIG.maxCount}`);
     </script>
 </body>
