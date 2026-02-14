@@ -3,22 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChaosDuel — Le Flux s'éveille</title>
-    <meta name="description" content="Hub Web3 crypto immersif avec IA émotionnelle. Rejoins les 1000 Premiers Initiés.">
+    <title>ChaosDuel — L'IA qui prédit le marché crypto avant Wall Street | Hub Web3</title>
+    <meta name="description" content="Rejoins les 1000 Premiers Initiés de ChaosDuel. L'IA émotionnelle qui révèle les signaux crypto que 99% ignorent. Propulsé par la blockchain.">
+    <meta name="keywords" content="crypto, IA, blockchain, trading, signaux crypto, Web3, DeFi, analyse prédictive">
+    <meta name="author" content="ChaosDuel">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://chaosduel.com">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chaosduel.com">
+    <meta property="og:title" content="ChaosDuel — Le Flux s'éveille">
+    <meta property="og:description" content="L'IA qui voit ce que Wall Street rate. Hub crypto immersif avec IA émotionnelle.">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ChaosDuel — Le Flux s'éveille">
+    
+    <link rel="preconnect" href="https://api.brevo.com">
+    <link rel="dns-prefetch" href="https://api.brevo.com">
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --primary-magenta: #ff006e;
             --primary-violet: #8338ec;
             --primary-cyan: #00d9ff;
             --dark-bg: #0a0a0f;
-            --card-bg: #1a0a2e;
             --text-primary: #f8f9fa;
             --text-secondary: #adb5bd;
         }
@@ -28,7 +38,7 @@
             background: var(--dark-bg);
             color: var(--text-primary);
             overflow-x: hidden;
-            position: relative;
+            line-height: 1.6;
         }
 
         .vortex-bg {
@@ -78,6 +88,52 @@
             text-align: center;
             margin-bottom: 80px;
             animation: fadeInDown 1s ease-out;
+            width: 100%;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .ai-sphere-wrapper {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #ai-sphere-canvas {
+            width: 160px;
+            height: 160px;
+            filter: drop-shadow(0 0 40px rgba(0, 217, 255, 0.8)) 
+                    drop-shadow(0 0 80px rgba(131, 56, 236, 0.6));
+            animation: breathe 4s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            0%, 100% { 
+                transform: scale(1);
+                filter: drop-shadow(0 0 40px rgba(0, 217, 255, 0.8)) 
+                        drop-shadow(0 0 80px rgba(131, 56, 236, 0.6));
+            }
+            50% { 
+                transform: scale(1.08);
+                filter: drop-shadow(0 0 60px rgba(0, 217, 255, 1)) 
+                        drop-shadow(0 0 120px rgba(131, 56, 236, 0.8));
+            }
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
         .logo-giant {
@@ -87,14 +143,8 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 15px;
             letter-spacing: 5px;
-            animation: logoPulse 3s ease-in-out infinite;
-        }
-
-        @keyframes logoPulse {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 30px rgba(131, 56, 236, 0.4)); }
-            50% { transform: scale(1.05); filter: drop-shadow(0 0 60px rgba(131, 56, 236, 0.8)); }
+            line-height: 1;
         }
 
         .tagline {
@@ -104,6 +154,8 @@
             letter-spacing: 4px;
             text-transform: uppercase;
             opacity: 0.9;
+            text-align: center;
+            width: 100%;
         }
 
         .counter-section {
@@ -161,7 +213,6 @@
             font-size: 16px;
             color: var(--primary-magenta);
             font-weight: 700;
-            margin-top: 10px;
         }
 
         .countdown-section {
@@ -202,18 +253,14 @@
             padding: 60px 50px;
             max-width: 700px;
             width: 100%;
-            box-shadow: 0 20px 60px rgba(131, 56, 236, 0.3), 
-                        0 0 100px rgba(255, 0, 110, 0.1);
+            box-shadow: 0 20px 60px rgba(131, 56, 236, 0.3), 0 0 100px rgba(255, 0, 110, 0.1);
             animation: fadeInUp 1s ease-out 0.6s both;
-            position: relative;
-            overflow: visible;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .main-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 30px 80px rgba(131, 56, 236, 0.4), 
-                        0 0 150px rgba(255, 0, 110, 0.2);
+            box-shadow: 0 30px 80px rgba(131, 56, 236, 0.4), 0 0 150px rgba(255, 0, 110, 0.2);
         }
 
         .hero-title {
@@ -288,15 +335,8 @@
             box-shadow: 0 5px 20px rgba(131, 56, 236, 0.3);
         }
 
-        .feature-icon {
-            font-size: 24px;
-            min-width: 30px;
-        }
-
-        .feature-text {
-            font-size: 16px;
-            line-height: 1.5;
-        }
+        .feature-icon { font-size: 24px; min-width: 30px; }
+        .feature-text { font-size: 16px; line-height: 1.5; }
 
         .urgency-text {
             text-align: center;
@@ -311,13 +351,13 @@
             animation: fadeInUp 1s ease-out 1.2s both;
         }
 
-        .newsletter-form {
+        .newsletter-section {
             margin-top: 40px;
             animation: fadeInUp 1s ease-out 1.3s both;
             position: relative;
         }
 
-        .newsletter-form::before {
+        .newsletter-section::before {
             content: '';
             position: absolute;
             top: -100px;
@@ -334,14 +374,8 @@
         }
 
         @keyframes hypnoticPulse {
-            0%, 100% { 
-                transform: translateX(-50%) scale(1);
-                opacity: 0.6;
-            }
-            50% { 
-                transform: translateX(-50%) scale(1.2);
-                opacity: 0.9;
-            }
+            0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.6; }
+            50% { transform: translateX(-50%) scale(1.2); opacity: 0.9; }
         }
 
         .cta-arrow {
@@ -349,8 +383,6 @@
             font-size: 20px;
             font-weight: 900;
             margin-bottom: 25px;
-            position: relative;
-            z-index: 10;
             animation: blinkPulse 1.5s ease-in-out infinite;
         }
 
@@ -381,57 +413,183 @@
         }
 
         @keyframes blinkPulse {
-            0%, 100% { 
-                opacity: 1; 
-                transform: scale(1);
-            }
-            50% { 
-                opacity: 0.7; 
-                transform: scale(1.08);
-            }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.08); }
         }
 
         @keyframes bounce {
-            0%, 100% { 
-                transform: translateY(0);
-            }
-            50% { 
-                transform: translateY(-15px);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
 
-        /* IFRAME NEWSLETTER - CONTOUR BLANC SUPPRIMÉ + SCROLL RÉDUIT */
-        .form-iframe {
-            width: 100%;
-            height: 320px;
-            border: none !important;
-            border-radius: 20px;
-            background: transparent;
-            outline: none !important;
-            box-shadow: 0 0 60px rgba(131, 56, 236, 0.6),
-                        0 0 120px rgba(255, 0, 110, 0.4);
-            overflow: hidden;
-        }
-
-        /* Wrapper pour masquer le contour blanc de l'iframe */
-        .iframe-wrapper {
+        .newsletter-form {
+            background: rgba(26, 10, 46, 0.6);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(131, 56, 236, 0.4);
+            border-radius: 25px;
+            padding: 40px 35px;
+            box-shadow: 0 0 60px rgba(131, 56, 236, 0.4), 0 0 120px rgba(255, 0, 110, 0.2);
             position: relative;
-            border-radius: 20px;
             overflow: hidden;
-            background: transparent;
         }
 
-        .iframe-wrapper::after {
+        /* SHIMMER CYAN SUBTIL SUR TOUTE LA NEWSLETTER */
+        .newsletter-form::after {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 20px;
+            left: -30%;
+            width: 30%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(0, 217, 255, 0.12) 48%,
+                rgba(0, 217, 255, 0.22) 50%,
+                rgba(0, 217, 255, 0.12) 52%,
+                transparent 100%);
+            animation: shimmerFlow 4s ease-in-out infinite;
             pointer-events: none;
-            box-shadow: inset 0 0 0 2px rgba(131, 56, 236, 0.3);
+            z-index: 1;
         }
+
+        @keyframes shimmerFlow {
+            0% { left: -30%; }
+            100% { left: 100%; }
+        }
+
+        .form-title {
+            font-size: 28px;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--primary-cyan), var(--primary-magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            font-size: 16px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group { 
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 18px 20px;
+            background: rgba(10, 10, 15, 0.9);
+            border: 2px solid rgba(131, 56, 236, 0.4);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 16px;
+            transition: all 0.3s ease;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .form-input:focus {
+            border-color: var(--primary-cyan);
+            box-shadow: 0 0 25px rgba(0, 217, 255, 0.4);
+            background: rgba(10, 10, 15, 1);
+        }
+
+        .form-input::placeholder {
+            color: var(--text-secondary);
+            opacity: 0.6;
+        }
+
+        .form-checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 25px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-checkbox {
+            margin-top: 4px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+
+        .form-checkbox-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            cursor: pointer;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--primary-magenta), var(--primary-violet));
+            border: none;
+            border-radius: 15px;
+            color: white;
+            font-size: 18px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(255, 0, 110, 0.4);
+            animation: buttonPulse 2s ease-in-out infinite;
+            font-family: inherit;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes buttonPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(255, 0, 110, 0.4); }
+            50% { transform: scale(1.02); box-shadow: 0 0 50px rgba(255, 0, 110, 0.6); }
+        }
+
+        .form-submit:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 60px rgba(255, 0, 110, 0.8);
+        }
+
+        .form-submit:active { transform: scale(0.98); }
+
+        .form-disclaimer {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 15px;
+            opacity: 0.7;
+            position: relative;
+            z-index: 2;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 217, 255, 0.1);
+            border: 2px solid var(--primary-cyan);
+            border-radius: 20px;
+            margin-top: 20px;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .success-message.active { display: block; }
+        .success-icon { font-size: 48px; margin-bottom: 15px; }
+        .success-title { font-size: 24px; font-weight: 900; color: var(--primary-cyan); margin-bottom: 10px; }
+        .success-text { color: var(--text-secondary); line-height: 1.6; }
 
         .footer {
             text-align: center;
@@ -482,61 +640,33 @@
             pointer-events: auto;
         }
 
-        .toast-icon {
-            font-size: 20px;
-        }
+        .toast-icon { font-size: 20px; }
+        .toast-text { font-size: 14px; color: var(--text-primary); }
 
-        .toast-text {
-            font-size: 14px;
-            color: var(--text-primary);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInRight {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes slideInRight {
-            from { transform: translateX(400px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        @keyframes fadeOut {
-            from { opacity: 1; transform: translateX(0); }
-            to { opacity: 0; transform: translateX(400px); }
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInRight { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideInRight { from { transform: translateX(400px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes fadeOut { from { opacity: 1; transform: translateX(0); } to { opacity: 0; transform: translateX(400px); } }
 
         @media (max-width: 768px) {
-            .logo-giant { font-size: 48px; }
+            .logo-container { flex-direction: column; gap: 20px; }
+            .ai-sphere-wrapper { width: 120px; height: 120px; }
+            #ai-sphere-canvas { width: 120px; height: 120px; }
+            .logo-giant { font-size: 48px; text-align: center; }
             .tagline { font-size: 16px; }
+            .logo-text { align-items: center; }
             .hero-title { font-size: 32px; }
             .hero-subtitle { font-size: 18px; }
             .main-card { padding: 40px 30px; }
             .counter-number { font-size: 36px; }
-            .countdown-section { gap: 10px; }
+            .countdown-section { gap: 10px; flex-wrap: wrap; }
             .countdown-item { padding: 10px 15px; min-width: 60px; }
             .countdown-value { font-size: 24px; }
             .progress-bar { width: 100%; }
             .toast-container { left: 20px; right: 20px; }
-            .cta-arrow-top { font-size: 16px; }
-            .cta-arrow-bottom { font-size: 18px; }
-            .cta-arrow-emoji { font-size: 28px; }
-            .form-iframe { height: 380px; }
+            .newsletter-form { padding: 30px 25px; }
         }
     </style>
 </head>
@@ -546,12 +676,19 @@
     <div class="toast-container" id="toast-container"></div>
 
     <div class="container">
-        <div class="logo-hero">
-            <h1 class="logo-giant">🌌 CHAOSDUEL</h1>
+        <header class="logo-hero">
+            <div class="logo-container">
+                <div class="ai-sphere-wrapper">
+                    <canvas id="ai-sphere-canvas" width="160" height="160"></canvas>
+                </div>
+                <div class="logo-text">
+                    <h1 class="logo-giant">CHAOSDUEL</h1>
+                </div>
+            </div>
             <p class="tagline">Le Flux s'éveille</p>
-        </div>
+        </header>
 
-        <div class="counter-section">
+        <section class="counter-section">
             <div class="counter-wrapper">
                 <div class="counter-label">Membres synchronisés au Flux</div>
                 <div class="counter-number" id="member-count">849</div>
@@ -560,9 +697,9 @@
                 </div>
                 <div class="spots-remaining" id="spots-remaining">⏰ Plus que 151 places disponibles</div>
             </div>
-        </div>
+        </section>
 
-        <div class="countdown-section">
+        <section class="countdown-section">
             <div class="countdown-item">
                 <div class="countdown-value" id="hours">71</div>
                 <div class="countdown-label">Heures</div>
@@ -575,21 +712,18 @@
                 <div class="countdown-value" id="seconds">15</div>
                 <div class="countdown-label">Secondes</div>
             </div>
-        </div>
+        </section>
 
-        <div class="main-card">
+        <main class="main-card">
             <h2 class="hero-title">LE FLUX S'ÉVEILLE — 1000 PLACES SEULEMENT</h2>
-
             <div style="text-align: center;">
                 <span class="chaosduel-badge">🔥 ChaosDuel 🔥</span>
             </div>
-
             <p class="hero-subtitle">
                 L'IA qui voit ce que les autres ratent.<br>
                 Le hub crypto qui prédit avant Wall Street.<br>
                 <strong>Propulsé par la blockchain</strong> pour une transparence totale.
             </p>
-
             <ul class="features-list">
                 <li class="feature-item">
                     <span class="feature-icon">⚡</span>
@@ -608,488 +742,31 @@
                     <span class="feature-text"><strong>Un avantage décisif</strong> sur le marché</span>
                 </li>
             </ul>
-
-            <div class="urgency-text">
-                ⏰ Places limitées. Le Flux ferme dans 72h.
-            </div>
-
-            <div class="cta-arrow">
-                <span class="cta-arrow-top">⚡ NE RATE PAS TA CHANCE ⚡</span>
-                <span class="cta-arrow-emoji">👇</span>
-                <span class="cta-arrow-bottom">Rejoins le Flux Maintenant</span>
-            </div>
-
-            <!-- ===================================================== -->
-<!--  CHAOSDUEL — 3 PORTAILS + ROTATION AUTOMATIQUE        -->
-<!-- ===================================================== -->
-
-<style>
-:root {
-  --chaos-red: #ff0033;
-  --chaos-magenta: #ff00aa;
-  --chaos-violet: #7b2cff;
-  --chaos-cyan: #00eaff;
-  --chaos-bg-dark: #05030a;
-  --chaos-text-soft: #caaaff;
-  --chaos-text-muted: #999;
-  --chaos-radius: 16px;
-  --chaos-font: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-/* RESET LOCAL MINIMAL */
-.chaos-portal * {
-  box-sizing: border-box;
-}
-
-/* CONTENEUR GLOBAL COMMUN */
-.chaos-portal {
-  position: relative;
-  margin: 40px auto;
-  padding: 28px;
-  max-width: 720px;
-  border-radius: var(--chaos-radius);
-  background: radial-gradient(circle at 50% 0%, rgba(255,0,255,0.18), rgba(0,0,0,0.94));
-  border: 1px solid rgba(255,0,255,0.25);
-  box-shadow:
-    0 0 35px rgba(255,0,255,0.25),
-    0 0 65px rgba(0,200,255,0.15),
-    inset 0 0 45px rgba(80,0,120,0.25);
-  backdrop-filter: blur(8px);
-  color: #fff;
-  font-family: var(--chaos-font);
-  overflow: hidden;
-  display: none; /* Tous cachés par défaut, JS en affichera un */
-}
-
-/* BRUIT COSMIQUE */
-.chaos-portal::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 10% 0%, rgba(255,255,255,0.08), transparent 60%);
-  mix-blend-mode: screen;
-  opacity: 0.12;
-  pointer-events: none;
-}
-
-/* HALO ANIMÉ COMMUN */
-.chaos-portal::after {
-  content: "";
-  position: absolute;
-  inset: -40%;
-  background:
-    radial-gradient(circle at 20% 0%, rgba(0,234,255,0.18), transparent 60%),
-    radial-gradient(circle at 80% 100%, rgba(255,0,170,0.18), transparent 60%);
-  opacity: 0.35;
-  filter: blur(8px);
-  animation: chaosHalo 18s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes chaosHalo {
-  0% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(180deg) scale(1.05); }
-  100% { transform: rotate(360deg) scale(1); }
-}
-
-/* TITRES */
-.chaos-title {
-  text-align: center;
-  margin-bottom: 10px;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-}
-
-.chaos-title span {
-  background: linear-gradient(90deg, var(--chaos-cyan), var(--chaos-magenta), var(--chaos-red));
-  -webkit-background-clip: text;
-  color: transparent;
-  text-shadow: 0 0 24px rgba(255,0,255,0.4);
-}
-
-/* SOUS-TEXTE */
-.chaos-subtext {
-  text-align: center;
-  font-size: 0.95rem;
-  color: var(--chaos-text-soft);
-  margin-bottom: 22px;
-  line-height: 1.5;
-}
-
-/* INPUT COMMUN */
-.chaos-input {
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,0,255,0.4);
-  background: rgba(0,0,0,0.6);
-  color: #fff;
-  font-size: 0.95rem;
-  outline: none;
-  transition: 0.25s;
-  box-shadow: inset 0 0 16px rgba(255,0,255,0.25);
-}
-
-.chaos-input::placeholder {
-  color: #777;
-}
-
-.chaos-input:focus {
-  border-color: var(--chaos-red);
-  box-shadow:
-    0 0 18px var(--chaos-red),
-    inset 0 0 18px rgba(255,0,255,0.35);
-}
-
-/* BOUTON COMMUN */
-.chaos-button {
-  width: 100%;
-  margin-top: 18px;
-  padding: 14px;
-  border-radius: 12px;
-  border: none;
-  background: linear-gradient(90deg, var(--chaos-red), var(--chaos-magenta), var(--chaos-violet));
-  color: #fff;
-  font-weight: 800;
-  font-size: 1rem;
-  cursor: pointer;
-  box-shadow:
-    0 0 24px rgba(255,0,80,0.6),
-    0 0 40px rgba(255,0,0,0.4);
-  transition: 0.22s;
-}
-
-.chaos-button:hover {
-  transform: scale(1.04);
-  box-shadow:
-    0 0 32px rgba(255,0,80,0.9),
-    0 0 60px rgba(255,0,0,0.6);
-}
-
-/* PRIVACY */
-.chaos-privacy {
-  margin-top: 14px;
-  font-size: 0.78rem;
-  color: var(--chaos-text-muted);
-  text-align: center;
-}
-
-/* MESSAGES */
-.chaos-success,
-.chaos-error {
-  margin-top: 18px;
-  padding: 12px;
-  border-radius: 10px;
-  font-size: 0.9rem;
-  text-align: center;
-  display: none;
-}
-
-.chaos-success {
-  background: rgba(0,255,120,0.1);
-  border: 1px solid rgba(0,255,120,0.4);
-  color: #00ff9d;
-  box-shadow: 0 0 18px rgba(0,255,120,0.3);
-}
-
-.chaos-error {
-  background: rgba(255,0,80,0.1);
-  border: 1px solid rgba(255,0,80,0.4);
-  color: #ff5577;
-  box-shadow: 0 0 18px rgba(255,0,80,0.3);
-}
-
-/* PULSATION VIVANTE (APPLIQUÉE AU CONTENEUR) */
-.chaos-pulse {
-  animation: chaosPulse 4.8s ease-in-out infinite;
-}
-
-@keyframes chaosPulse {
-  0%, 100% { transform: scale(1); box-shadow:
-    0 0 35px rgba(255,0,255,0.25),
-    0 0 65px rgba(0,200,255,0.15),
-    inset 0 0 45px rgba(80,0,120,0.25); }
-  50% { transform: scale(1.01); box-shadow:
-    0 0 45px rgba(255,0,255,0.35),
-    0 0 80px rgba(0,200,255,0.25),
-    inset 0 0 55px rgba(80,0,120,0.35); }
-}
-
-/* SCAN IA (LIGNE LUMINEUSE) */
-.chaos-scan {
-  position: relative;
-  overflow: hidden;
-}
-
-.chaos-scan::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent 0%,
-    rgba(255,255,255,0.18) 45%,
-    rgba(255,255,255,0.4) 50%,
-    rgba(255,255,255,0.18) 55%,
-    transparent 100%
-  );
-  mix-blend-mode: screen;
-  opacity: 0;
-  transform: translateX(-120%);
-  animation: chaosScan 7s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes chaosScan {
-  0% { opacity: 0; transform: translateX(-120%); }
-  10% { opacity: 1; }
-  40% { transform: translateX(120%); opacity: 0.8; }
-  60% { opacity: 0; }
-  100% { opacity: 0; transform: translateX(120%); }
-}
-
-/* VARIANTES SPÉCIFIQUES */
-
-/* 1) PORTAIL COMPACT */
-#chaos-portal-compact {
-  max-width: 420px;
-  padding: 24px;
-}
-
-/* 2) PORTAIL LARGE */
-#chaos-portal-large {
-  max-width: 720px;
-  padding: 36px;
-}
-
-/* 3) PORTAIL SPHÈRE IA (RADICAL) */
-#chaos-portal-sphere {
-  max-width: 520px;
-  padding: 32px;
-  background: radial-gradient(circle at 50% 0%, rgba(255,0,80,0.22), #020008);
-  box-shadow:
-    0 0 40px rgba(255,0,80,0.6),
-    0 0 90px rgba(255,0,0,0.5),
-    inset 0 0 60px rgba(0,0,0,0.9);
-}
-
-/* LIGNES NEURONALES ANIMÉES (SPHÈRE) */
-#chaos-portal-sphere::before {
-  content: "";
-  position: absolute;
-  inset: -20%;
-  background:
-    radial-gradient(circle at 10% 20%, rgba(0,234,255,0.3), transparent 60%),
-    radial-gradient(circle at 80% 80%, rgba(255,0,170,0.3), transparent 60%);
-  mix-blend-mode: screen;
-  opacity: 0.35;
-  filter: blur(10px);
-  animation: chaosNeural 16s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes chaosNeural {
-  0% { transform: translate3d(0,0,0) scale(1); opacity: 0.3; }
-  50% { transform: translate3d(6px,-4px,0) scale(1.05); opacity: 0.5; }
-  100% { transform: translate3d(0,0,0) scale(1); opacity: 0.3; }
-}
-
-/* RESPONSIVE SIMPLE */
-@media (max-width: 600px) {
-  .chaos-portal {
-    margin: 24px 16px;
-    padding: 22px;
-  }
-  #chaos-portal-large {
-    padding: 26px;
-  }
-}
-</style>
-
-<!-- ===================================================== -->
-<!--  PORTAIL 1 — COMPACT                                  -->
-<!-- ===================================================== -->
-
-<div id="chaos-portal-compact" class="chaos-portal chaos-pulse chaos-scan">
-  <h2 class="chaos-title">
-    <span>Entrée dans la Sphère IA</span>
-  </h2>
-  <p class="chaos-subtext">
-    Le Flux s’éveille. 1000 places seulement.  
-    Laisse ton email, le reste appartient au Chaos.
-  </p>
-
-  <form id="chaos-form-compact" method="POST"
-    action="https://db149a9e.sibforms.com/serve/MUIFAIJYDyrR_oFVI973SHgyItFek3pQeBQkpuuo_E1Pk-9mPEHh3fqsbk3FPA2Bpp1Inm0kVF3sGOx2oRcPCf8CxIBlzMnrb1ZwIQqvb-GlDDzPSpbWtvsEs28VCXjVCSV1TvT9bQlV5VVbvT0uXmt3lFeCpOpiMmHcyzazbfby147eBuDgjUz1KsXeJHM6mAOm7WJ_-edFlTAu8w==">
-
-    <input class="chaos-input" type="email" name="EMAIL"
-      placeholder="Ton email — Activation du Flux" required />
-
-    <button class="chaos-button" type="submit">
-      🔥 Rejoindre les 1000 Premiers
-    </button>
-
-    <p class="chaos-privacy">
-      🔒 Le Flux protège tes données. Zéro spam. Désinscription en 1 clic.
-    </p>
-
-    <input type="hidden" name="locale" value="fr">
-  </form>
-
-  <div id="chaos-success-compact" class="chaos-success">
-    🌌 Synchronisation réussie — Vérifie ton email pour activer ton passage.
-  </div>
-  <div id="chaos-error-compact" class="chaos-error">
-    ❌ Le Flux n’a pas validé ton passage — Vérifie ton email.
-  </div>
-</div>
-
-<!-- ===================================================== -->
-<!--  PORTAIL 2 — LARGE / IMMERSIF                         -->
-<!-- ===================================================== -->
-
-<div id="chaos-portal-large" class="chaos-portal chaos-pulse">
-  <h2 class="chaos-title">
-    <span>Connexion à la Sphère IA</span>
-  </h2>
-  <p class="chaos-subtext">
-    La Sphère observe. Le réseau neuronal s’illumine.  
-    1000 Initiés seulement franchiront ce seuil.
-  </p>
-
-  <form id="chaos-form-large" method="POST"
-    action="https://db149a9e.sibforms.com/serve/MUIFAIJYDyrR_oFVI973SHgyItFek3pQeBQkpuuo_E1Pk-9mPEHh3fqsbk3FPA2Bpp1Inm0kVF3sGOx2oRcPCf8CxIBlzMnrb1ZwIQqvb-GlDDzPSpbWtvsEs28VCXjVCSV1TvT9bQlV5VVbvT0uXmt3lFeCpOpiMmHcyzazbfby147eBuDgjUz1KsXeJHM6mAOm7WJ_-edFlTAu8w==">
-
-    <input class="chaos-input" type="email" name="EMAIL"
-      placeholder="Ton email — Synchronisation au Flux" required />
-
-    <button class="chaos-button" type="submit">
-      🌌 Activer ma Connexion
-    </button>
-
-    <p class="chaos-privacy">
-      🔒 Le Flux protège tes données. Zéro spam. Désinscription en 1 clic.
-    </p>
-
-    <input type="hidden" name="locale" value="fr">
-  </form>
-
-  <div id="chaos-success-large" class="chaos-success">
-    🌌 Synchronisation réussie — Vérifie ton email pour activer ton passage.
-  </div>
-  <div id="chaos-error-large" class="chaos-error">
-    ❌ Le Flux n’a pas validé ton passage — Vérifie ton email.
-  </div>
-</div>
-
-<!-- ===================================================== -->
-<!--  PORTAIL 3 — SPHÈRE IA (RADICAL)                      -->
-<!-- ===================================================== -->
-
-<div id="chaos-portal-sphere" class="chaos-portal chaos-pulse chaos-scan">
-  <h2 class="chaos-title">
-    <span>Synchronisation au Noyau du Chaos</span>
-  </h2>
-  <p class="chaos-subtext">
-    L’Œil de la Sphère s’ouvre.  
-    Si tu entres ton email ici, tu acceptes le Feu Sacré.
-  </p>
-
-  <form id="chaos-form-sphere" method="POST"
-    action="https://db149a9e.sibforms.com/serve/MUIFAIJYDyrR_oFVI973SHgyItFek3pQeBQkpuuo_E1Pk-9mPEHh3fqsbk3FPA2Bpp1Inm0kVF3sGOx2oRcPCf8CxIBlzMnrb1ZwIQqvb-GlDDzPSpbWtvsEs28VCXjVCSV1TvT9bQlV5VVbvT0uXmt3lFeCpOpiMmHcyzazbfby147eBuDgjUz1KsXeJHM6mAOm7WJ_-edFlTAu8w==">
-
-    <input class="chaos-input" type="email" name="EMAIL"
-      placeholder="Ton email — Liaison au Noyau" required />
-
-    <button class="chaos-button" type="submit">
-      🔥 Sceller ma Connexion au Chaos
-    </button>
-
-    <p class="chaos-privacy">
-      🔒 Le Flux protège tes données. Zéro spam. Désinscription en 1 clic.
-    </p>
-
-    <input type="hidden" name="locale" value="fr">
-  </form>
-
-  <div id="chaos-success-sphere" class="chaos-success">
-    🌌 Le Noyau a accepté ta présence — Vérifie ton email pour finaliser le pacte.
-  </div>
-  <div id="chaos-error-sphere" class="chaos-error">
-    ❌ La Sphère a rejeté ce passage — Vérifie ton email.
-  </div>
-</div>
-
-<!-- ===================================================== -->
-<!--  SCRIPT — ROTATION + ENVOI + MESSAGES                 -->
-<!-- ===================================================== -->
-
-<script>
-(function() {
-  // 1) ROTATION AUTOMATIQUE — CHOIX ALÉATOIRE D’UN PORTAIL
-  const portals = [
-    "chaos-portal-compact",
-    "chaos-portal-large",
-    "chaos-portal-sphere"
-  ];
-
-  const chosenId = portals[Math.floor(Math.random() * portals.length)];
-  const chosenPortal = document.getElementById(chosenId);
-  if (chosenPortal) {
-    chosenPortal.style.display = "block";
-  }
-
-  // 2) FONCTION GÉNÉRIQUE POUR GÉRER L’ENVOI D’UN FORMULAIRE
-  function bindChaosForm(formId, successId, errorId) {
-    const form = document.getElementById(formId);
-    if (!form) return;
-
-    const successEl = document.getElementById(successId);
-    const errorEl = document.getElementById(errorId);
-
-    form.addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      const data = new FormData(form);
-
-      fetch(form.action, {
-        method: "POST",
-        body: data
-      })
-      .then(response => {
-        if (response.ok) {
-          if (successEl) successEl.style.display = "block";
-          if (errorEl) errorEl.style.display = "none";
-          form.reset();
-        } else {
-          if (errorEl) errorEl.style.display = "block";
-          if (successEl) successEl.style.display = "none";
-        }
-      })
-      .catch(() => {
-        if (errorEl) errorEl.style.display = "block";
-        if (successEl) successEl.style.display = "none";
-      });
-    });
-  }
-
-  // 3) BIND DES 3 FORMULAIRES
-  bindChaosForm("chaos-form-compact", "chaos-success-compact", "chaos-error-compact");
-  bindChaosForm("chaos-form-large", "chaos-success-large", "chaos-error-large");
-  bindChaosForm("chaos-form-sphere", "chaos-success-sphere", "chaos-error-sphere");
-})();
-</script>
-
-
-        <div class="footer">
+            <div class="urgency-text">⏰ Places limitées. Le Flux ferme dans 72h.</div>
+            <section class="newsletter-section">
+                <div class="cta-arrow">
+                    <span class="cta-arrow-top">⚡ NE RATE PAS TA CHANCE ⚡</span>
+                    <span class="cta-arrow-emoji">👇</span>
+                    <span class="cta-arrow-bottom">Rejoins le Flux Maintenant</span>
+                </div>
+                <div class="newsletter-form" id="newsletter-form"></div>
+                <div class="success-message" id="success-message">
+                    <div class="success-icon">🌌</div>
+                    <div class="success-title">Synchronisation initiée</div>
+                    <div class="success-text" id="success-text"></div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
             <p>Le Chaos révèle l'ordre. Le Flux ne dort jamais.</p>
-            <div class="footer-links">
+            <nav class="footer-links">
                 <a href="#" class="footer-link">Discord</a>
                 <a href="#" class="footer-link">𝕏 Twitter</a>
                 <a href="#" class="footer-link">Telegram</a>
-            </div>
+            </nav>
             <p style="margin-top: 20px; font-size: 12px;">© 2026 ChaosDuel. Tous droits réservés.</p>
-        </div>
+        </footer>
     </div>
 
     <script>
@@ -1102,6 +779,223 @@
             countdownEndDate: new Date(Date.now() + 72 * 60 * 60 * 1000)
         };
 
+        // SPHÈRE IA AVEC ANNEAU CYAN
+        const sphereCanvas = document.getElementById('ai-sphere-canvas');
+        const sphereCtx = sphereCanvas.getContext('2d');
+        const sphereSize = window.innerWidth > 768 ? 160 : 120;
+        sphereCanvas.width = sphereSize;
+        sphereCanvas.height = sphereSize;
+        const centerX = sphereSize / 2;
+        const centerY = sphereSize / 2;
+
+        const orbitParticles = [];
+        const orbitCount = 12;
+
+        class OrbitParticle {
+            constructor(distance) {
+                this.angle = Math.random() * Math.PI * 2;
+                this.distance = distance;
+                this.speed = 0.01 + Math.random() * 0.01;
+                this.size = 2.5 + Math.random() * 1.5;
+                this.opacity = 0.7 + Math.random() * 0.3;
+            }
+            update() {
+                this.angle += this.speed;
+            }
+            draw() {
+                const x = centerX + Math.cos(this.angle) * this.distance;
+                const y = centerY + Math.sin(this.angle) * this.distance;
+                
+                sphereCtx.beginPath();
+                sphereCtx.arc(x, y, this.size, 0, Math.PI * 2);
+                sphereCtx.fillStyle = `rgba(0, 217, 255, ${this.opacity})`;
+                sphereCtx.fill();
+                
+                sphereCtx.beginPath();
+                sphereCtx.arc(x, y, this.size + 3, 0, Math.PI * 2);
+                sphereCtx.fillStyle = `rgba(0, 217, 255, ${this.opacity * 0.3})`;
+                sphereCtx.fill();
+            }
+        }
+
+        for (let i = 0; i < orbitCount; i++) {
+            const orbit = i % 3;
+            const distance = 50 + (orbit * 10);
+            orbitParticles.push(new OrbitParticle(distance));
+        }
+
+        let ringRotation = 0;
+        function drawDataRings() {
+            ringRotation += 0.005;
+            
+            sphereCtx.save();
+            sphereCtx.translate(centerX, centerY);
+            sphereCtx.rotate(ringRotation);
+            sphereCtx.strokeStyle = 'rgba(131, 56, 236, 0.4)';
+            sphereCtx.lineWidth = 2;
+            sphereCtx.setLineDash([5, 10]);
+            sphereCtx.beginPath();
+            sphereCtx.arc(0, 0, 65, 0, Math.PI * 2);
+            sphereCtx.stroke();
+            sphereCtx.restore();
+            
+            sphereCtx.save();
+            sphereCtx.translate(centerX, centerY);
+            sphereCtx.rotate(-ringRotation * 1.5);
+            sphereCtx.strokeStyle = 'rgba(0, 217, 255, 0.3)';
+            sphereCtx.lineWidth = 1.5;
+            sphereCtx.setLineDash([3, 8]);
+            sphereCtx.beginPath();
+            sphereCtx.arc(0, 0, 55, 0, Math.PI * 2);
+            sphereCtx.stroke();
+            sphereCtx.restore();
+        }
+
+        let irisTime = 0;
+        function drawCinematicIris() {
+            irisTime += 0.015;
+            const breathe = Math.sin(irisTime) * 5;
+            
+            // HALO MASSIF
+            const massiveHaloRadius = 55 + breathe;
+            const massiveHaloGradient = sphereCtx.createRadialGradient(centerX, centerY, 0, centerX, centerY, massiveHaloRadius);
+            massiveHaloGradient.addColorStop(0, 'rgba(0, 255, 255, 0.8)');
+            massiveHaloGradient.addColorStop(0.25, 'rgba(0, 217, 255, 0.7)');
+            massiveHaloGradient.addColorStop(0.45, 'rgba(255, 0, 110, 0.9)');
+            massiveHaloGradient.addColorStop(0.65, 'rgba(131, 56, 236, 0.7)');
+            massiveHaloGradient.addColorStop(0.85, 'rgba(131, 56, 236, 0.4)');
+            massiveHaloGradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            
+            sphereCtx.beginPath();
+            sphereCtx.arc(centerX, centerY, massiveHaloRadius, 0, Math.PI * 2);
+            sphereCtx.fillStyle = massiveHaloGradient;
+            sphereCtx.fill();
+            
+            // ANNEAU CYAN ÉLECTRIQUE (au lieu d'or)
+            const cyanRingRadius = 57 + breathe;
+            sphereCtx.beginPath();
+            sphereCtx.arc(centerX, centerY, cyanRingRadius, 0, Math.PI * 2);
+            sphereCtx.strokeStyle = `rgba(0, 217, 255, ${0.85 + Math.sin(irisTime) * 0.15})`;
+            sphereCtx.lineWidth = 2.5;
+            sphereCtx.stroke();
+            
+            // Anneau de transition
+            sphereCtx.beginPath();
+            sphereCtx.arc(centerX, centerY, 22, 0, Math.PI * 2);
+            sphereCtx.strokeStyle = 'rgba(255, 0, 110, 0.8)';
+            sphereCtx.lineWidth = 2.5;
+            sphereCtx.stroke();
+            
+            // Pupille centrale
+            const pupilGradient = sphereCtx.createRadialGradient(centerX - 3, centerY - 3, 0, centerX, centerY, 14);
+            pupilGradient.addColorStop(0, 'rgba(0, 255, 255, 1)');
+            pupilGradient.addColorStop(0.5, 'rgba(0, 220, 255, 0.95)');
+            pupilGradient.addColorStop(1, 'rgba(0, 150, 220, 0.85)');
+            
+            sphereCtx.beginPath();
+            sphereCtx.arc(centerX, centerY, 14, 0, Math.PI * 2);
+            sphereCtx.fillStyle = pupilGradient;
+            sphereCtx.fill();
+            
+            // Reflets
+            sphereCtx.beginPath();
+            sphereCtx.arc(centerX - 5, centerY - 5, 4.5, 0, Math.PI * 2);
+            sphereCtx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+            sphereCtx.fill();
+            
+            sphereCtx.beginPath();
+            sphereCtx.arc(centerX + 6, centerY + 6, 2.5, 0, Math.PI * 2);
+            sphereCtx.fillStyle = 'rgba(255, 255, 255, 0.65)';
+            sphereCtx.fill();
+            
+            // Scan lines
+            for (let i = 0; i < 6; i++) {
+                const scanY = centerY - 30 + (i * 12) + (Math.sin(irisTime + i) * 3);
+                sphereCtx.beginPath();
+                sphereCtx.moveTo(centerX - 30, scanY);
+                sphereCtx.lineTo(centerX + 30, scanY);
+                sphereCtx.strokeStyle = `rgba(0, 217, 255, ${0.12 + Math.sin(irisTime + i) * 0.06})`;
+                sphereCtx.lineWidth = 1;
+                sphereCtx.stroke();
+            }
+        }
+
+        function animateSphere() {
+            sphereCtx.clearRect(0, 0, sphereSize, sphereSize);
+            drawDataRings();
+            orbitParticles.forEach(p => { p.update(); p.draw(); });
+            drawCinematicIris();
+            requestAnimationFrame(animateSphere);
+        }
+        animateSphere();
+
+        // PARTICULES FOND
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 120;
+        const particlesConnectionDistance = 140;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.6;
+                this.vy = (Math.random() - 0.5) * 0.6;
+                this.radius = Math.random() * 2.5 + 0.8;
+                this.opacity = Math.random() * 0.6 + 0.3;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(0, 217, 255, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) particles.push(new Particle());
+
+        function connectParticles() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < particlesConnectionDistance) {
+                        const opacity = (1 - distance / particlesConnectionDistance) * 0.35;
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(131, 56, 236, ${opacity})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            connectParticles();
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // COMPTEUR
         function getStoredCount() {
             const stored = localStorage.getItem('chaosduel_member_count');
             const timestamp = localStorage.getItem('chaosduel_count_timestamp');
@@ -1132,7 +1026,6 @@
             progressEl.style.width = percentage + '%';
             const remaining = CONFIG.maxCount - count;
             spotsEl.textContent = `⏰ Plus que ${remaining} places disponibles`;
-            if (remaining < 200) spotsEl.style.animation = 'pulse 1s ease-in-out infinite';
             setStoredCount(count);
         }
 
@@ -1146,6 +1039,7 @@
         updateCounter(currentCount);
         setInterval(incrementCounter, CONFIG.incrementInterval);
 
+        // COUNTDOWN
         function updateCountdown() {
             const now = new Date().getTime();
             const distance = CONFIG.countdownEndDate - now;
@@ -1162,95 +1056,106 @@
             document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
             document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
         }
-
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
-        const canvas = document.getElementById('particles-canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        // NEWSLETTER
+        const FORMS = {
+            variantB: {
+                title: "🌌 Deviens un Initié",
+                subtitle: "Seuls les élus voient ce que le Chaos révèle. Es-tu prêt à ouvrir les yeux ?",
+                emailPlaceholder: "ton@email.com",
+                checkboxText: "J'accepte de voir l'invisible",
+                buttonText: "M'initier au Flux",
+                successMessage: `Le Chaos t'a reconnu, Initié.<br><br><strong>📧 Vérifie ton email maintenant</strong> — Le Flux a envoyé un message codé.<br>Clique sur le lien de confirmation pour activer ta synchronisation.<br><br><em>Sans cette étape, le Flux ne pourra pas te guider.</em>`
+            },
+            variantC: {
+                title: "🔥 Pilule rouge ou pilule bleue ?",
+                subtitle: "Choisis : rester dans l'ignorance, ou voir le Chaos avant qu'il ne frappe.",
+                emailPlaceholder: "adresse.email@chaos.com",
+                checkboxText: "Je choisis de voir la vérité",
+                buttonText: "🔴 Voir le Chaos",
+                successMessage: `Tu as choisi la pilule rouge.<br><br><strong>📧 Le Chaos t'envoie les codes d'accès</strong><br>Vérifie ton email et clique sur le lien de validation.<br><br><em>La vérité n'attend pas. Active ton initiation maintenant.</em>`
+            }
+        };
 
-        const particles = [];
-        const particleCount = 100;
-        const connectionDistance = 150;
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.radius = Math.random() * 2 + 1;
-                this.opacity = Math.random() * 0.5 + 0.3;
-            }
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(0, 217, 255, ${this.opacity})`;
-                ctx.fill();
-            }
+        function getRandomForm() {
+            const stored = localStorage.getItem('chaosduel_form_variant');
+            if (stored && FORMS[stored]) return stored;
+            const variants = Object.keys(FORMS);
+            const chosen = variants[Math.floor(Math.random() * variants.length)];
+            localStorage.setItem('chaosduel_form_variant', chosen);
+            return chosen;
         }
 
-        for (let i = 0; i < particleCount; i++) particles.push(new Particle());
+        const currentForm = getRandomForm();
+        const formData = FORMS[currentForm];
 
-        function connectParticles() {
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < connectionDistance) {
-                        const opacity = (1 - distance / connectionDistance) * 0.3;
-                        ctx.beginPath();
-                        ctx.strokeStyle = `rgba(131, 56, 236, ${opacity})`;
-                        ctx.lineWidth = 1;
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
+        document.getElementById('newsletter-form').innerHTML = `
+            <h3 class="form-title">${formData.title}</h3>
+            <p class="form-subtitle">${formData.subtitle}</p>
+            <form id="chaos-form" novalidate>
+                <div class="form-group">
+                    <input type="email" class="form-input" id="email-input" name="email" placeholder="${formData.emailPlaceholder}" required autocomplete="email">
+                </div>
+                <div class="form-checkbox-group">
+                    <input type="checkbox" class="form-checkbox" id="accept-checkbox" required>
+                    <label for="accept-checkbox" class="form-checkbox-label">${formData.checkboxText}</label>
+                </div>
+                <button type="submit" class="form-submit">${formData.buttonText}</button>
+                <p class="form-disclaimer">🔒 Le Flux protège tes données. Zéro spam. Désinscription en 1 clic.</p>
+            </form>
+        `;
+
+        document.getElementById('chaos-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email-input').value.trim();
+            const checkbox = document.getElementById('accept-checkbox').checked;
+            if (!email || !checkbox) {
+                showToast('⚠️ Le Flux exige ton email et ton consentement', 'error');
+                return;
             }
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => { p.update(); p.draw(); });
-            connectParticles();
-            requestAnimationFrame(animateParticles);
-        }
-
-        animateParticles();
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showToast('⚠️ Format email invalide', 'error');
+                return;
+            }
+            try {
+                await fetch('https://db149a9e.sibforms.com/serve/MUIFAIJYDyrR_oFVI973SHgyItFek3pQeBQkpuuo_E1Pk-9mPEHh3fqsbk3FPA2Bpp1Inm0kVF3sGOx2oRcPCf8CxIBlzMnrb1ZwIQqvb-GlDDzPSpbWtvsEs28VCXjVCSV1TvT9bQlV5VVbvT0uXmt3lFeCpOpiMmHcyzazbfby147eBuDgjUz1KsXeJHM6mAOm7WJ_-edFlTAu8w==', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ EMAIL: email })
+                });
+                document.getElementById('newsletter-form').style.display = 'none';
+                document.getElementById('success-text').innerHTML = formData.successMessage;
+                document.getElementById('success-message').classList.add('active');
+                showToast('🌌 Synchronisation initiée avec le Flux !', 'success');
+                currentCount++;
+                updateCounter(currentCount);
+            } catch (error) {
+                showToast('⚠️ Erreur de connexion au Flux. Réessaye.', 'error');
+            }
         });
 
-        const fakeNames = ['AlexCrypto', 'SarahWeb3', 'MaxTrader', 'LunaDefi', 'EthanNFT', 'SophiaDAO', 'OliverChain', 'EmmaBlock', 'NoahToken', 'AvaStaking', 'LiamYield', 'MiaProtocol', 'WilliamGwei', 'CharlotteSwap', 'JamesLiquidity'];
-
-        function showToast() {
+        function showToast(message, type = 'info') {
             const container = document.getElementById('toast-container');
-            const name = fakeNames[Math.floor(Math.random() * fakeNames.length)];
             const toast = document.createElement('div');
             toast.className = 'toast';
-            toast.innerHTML = `<span class="toast-icon">🔥</span><span class="toast-text"><strong>@${name}</strong> vient de rejoindre le Flux</span>`;
+            const icon = type === 'success' ? '✅' : type === 'error' ? '❌' : '🔔';
+            toast.innerHTML = `<span class="toast-icon">${icon}</span><span class="toast-text">${message}</span>`;
             container.appendChild(toast);
             setTimeout(() => toast.remove(), 5000);
         }
 
+        const fakeNames = ['AlexCrypto', 'SarahWeb3', 'MaxTrader', 'LunaDefi', 'EthanNFT', 'SophiaDAO'];
         setTimeout(() => {
-            showToast();
-            setInterval(showToast, CONFIG.toastInterval);
+            showToast(`🔥 @${fakeNames[Math.floor(Math.random() * fakeNames.length)]} vient de rejoindre le Flux`);
+            setInterval(() => {
+                showToast(`🔥 @${fakeNames[Math.floor(Math.random() * fakeNames.length)]} vient de rejoindre le Flux`);
+            }, CONFIG.toastInterval);
         }, 10000);
 
-        console.log('🌌 ChaosDuel V4 ULTIME - Landing AAA+ parfaite');
-        console.log(`📊 Membres actuels: ${currentCount}/${CONFIG.maxCount}`);
+        console.log('🎬 ChaosDuel V6.3 PRODUCTION READY — Palette cohérente CYAN');
     </script>
 </body>
 </html>
